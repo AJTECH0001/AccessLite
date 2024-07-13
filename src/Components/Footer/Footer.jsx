@@ -10,30 +10,7 @@ function Footer() {
         >
           <div className="container py-5">
             <div className="row g-5">
-              <div className="col-lg-3 col-md-6">
-                <h5 className="text-white mb-4">Contact Us</h5>
-                <p className="mb-2">
-                  <i className="fa fa-map-marker-alt me-3"></i>Ibadan, Oyo State</p>
-                <p className="mb-2">
-                  <i className="fa fa-phone-alt me-3"></i>+2348149473231</p>
-                <p className="mb-2">
-                  <i className="fa fa-envelope me-3"></i>info@example.com
-                </p>
-                <div className="d-flex pt-2">
-                  <a className="btn btn-outline-light btn-social" href="">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a className="btn btn-outline-light btn-social" href="">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a className="btn btn-outline-light btn-social" href="">
-                    <i className="fab fa-youtube"></i>
-                  </a>
-                  <a className="btn btn-outline-light btn-social" href="">
-                    <i className="fab fa-linkedin-in"></i>
-                  </a>
-                </div>
-              </div>
+             
               <div className="col-lg-3 col-md-6">
                 <h5 className="text-white mb-4">Quick Links</h5>
                 
@@ -80,7 +57,7 @@ function Footer() {
               </div>
               <div className="col-lg-3 col-md-6">
                 <h5 className="text-white mb-4">THEME</h5>
-                <p>BIH|ARBITRUM BLOCKCHAIN HACKATON </p>
+                <p>ACCESSLITE </p>
                 <div
                   className="position-relative mx-auto"
                   style={{ maxWidth: "400px" }}
@@ -103,16 +80,7 @@ function Footer() {
           <div className="container">  
             <div className="copyright">
               <div className="row">
-                <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                  &copy;{" "}
-                  <p className="border-bottom" href="#">
-                    TOBA|DASLAW|PRECIOUS
-                  </p>
-                  All Right Reserved. Designed By{" "}
-                  <p className="border-bottom" >
-                    TEAM DAIMOND
-                  </p>
-                </div>
+               
               </div>
             </div>
           </div>
