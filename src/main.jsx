@@ -12,7 +12,6 @@ const queryClient = new QueryClient();
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'Your_project_Id', // Replace 'Your_project_Id' with your actual project ID
-  chains: [arbitrumSepolia],
   ssr: true,
 });
 

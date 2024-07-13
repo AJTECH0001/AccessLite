@@ -1,8 +1,21 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.7;
 
-contract RealEstateTransaction {
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@zetachain/protocol-contracts/contracts/zevm/SystemContract.sol";
+import "@zetachain/protocol-contracts/contracts/zevm/interfaces/zContract.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@zetachain/toolkit/contracts/BytesHelperLib.sol";
+import "@zetachain/toolkit/contracts/OnlySystem.sol";
 
+contract RealEstateTransaction is zContract, ERC721, OnlySystem, ERC721URIStorage, ERC721Enumerable {
+    SystemContract public systemContract;
+    error CallerNotOwnerNotApproved();
+    uint256 constant BITCOIN = 18332;
+
+    mapping(uint256 => uint256) public tokenAmounts;
+    mapping(uint256 => uint256) public tokenChains;
     struct PropertyListing {
         uint propertyId;
         string imageUrl;
@@ -15,6 +28,7 @@ contract RealEstateTransaction {
         address seller;
         address buyer;
         bool isSold;
+        string uri;
     }
 
     event registeredProperty(
@@ -30,8 +44,46 @@ contract RealEstateTransaction {
     PropertyListing[] public propertyListings;
 
     mapping(address => uint[]) public userOwnedProperties;
+    uint256 public _nextTokenId;
 
-    function createPropertyListing(string memory imageUrl, string memory propertyTitle, string memory propertyLocation,uint propertySqft, uint propertyBhk, uint propertyBath, uint propertyPrice) public {
+    constructor(address systemContractAddress) ERC721("Entertainment", "ENT") {
+        systemContract = SystemContract(systemContractAddress);
+        _nextTokenId = 0;
+    }
+
+    function onCrossChainCall(
+        zContext calldata context,
+        address zrc20,
+        uint256 amount,
+        bytes calldata message
+    ) external virtual override onlySystem(systemContract) {
+        address recipient;
+
+        if (context.chainID == BITCOIN) {
+            recipient = BytesHelperLib.bytesToAddress(message, 0);
+        } else {
+            recipient = abi.decode(message, (address));
+        }
+
+        _mintNFT(recipient, context.chainID, amount, "");
+    }
+
+    function _mintNFT(
+        address recipient,
+        uint256 chainId,
+        uint256 amount,
+        string memory uri
+    ) private {
+        uint256 tokenId = _nextTokenId;
+        _safeMint(recipient, tokenId);
+        tokenChains[tokenId] = chainId;
+        tokenAmounts[tokenId] = amount;
+        _setTokenURI(tokenId, uri);
+
+        _nextTokenId++;
+    }
+
+    function createPropertyListing(string memory imageUrl, string memory propertyTitle, string memory propertyLocation,uint propertySqft, uint propertyBhk, uint propertyBath, uint propertyPrice, string memory uri) public {
         PropertyListing memory newListing;
         newListing.propertyId = propertyListingCount;
         newListing.imageUrl = imageUrl;
@@ -48,7 +100,7 @@ contract RealEstateTransaction {
         emit registeredProperty(newListing.propertyLocation, newListing.propertySqft, newListing.propertyBath, newListing.propertyPrice, newListing.propertyBhk);
     }
 
-    function buyProperty(uint propertyListingId) public payable {
+    function buyProperty(uint propertyListingId, uint256 chainID) public payable {
         require(!propertyListings[propertyListingId].isSold, "Property already sold");
         payable(propertyListings[propertyListingId].seller).transfer(msg.value);
         propertyListings[propertyListingId].buyer = msg.sender;

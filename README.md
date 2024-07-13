@@ -1,6 +1,6 @@
 # AccessLite Real Estate Dapp
 
-Welcome to the official README for the AccessLite Real Estate Dapp developed during the BIH x Arbitrum Bootcamp 2023-2024 Hackathon.
+Welcome to the official README for the AccessLite Real Estate Dapp.
 
 ## Project Overview
 
@@ -24,7 +24,7 @@ AccessLite Dapp is a cutting-edge Web 3.0 Real Estate application developed with
 
 ## How to Use
 
-1. **Installation:** Clone the AccessLite repository from [GitHub](https://github.com/tobatosin/AccessLite.git) and follow the installation instructions in the README file.
+1. **Installation:** Clone the AccessLite repository from and follow the installation instructions in the README file.
 
 2. **Getting Started:** Once installed, navigate to the AccessLite Dapp and create an account or log in if you already have one.
 
@@ -36,27 +36,12 @@ AccessLite Dapp is a cutting-edge Web 3.0 Real Estate application developed with
 
 ## Technologies Used
 
-- **Arbitrum:** Leveraged for scalability and efficiency in smart contract execution.
+- **Zetachain:** Leveraged for scalability and efficiency in smart contract execution.
 - **Web 3.0:** Harnessing the power of blockchain technology for decentralized and transparent transactions.
 - **JavaScript/React:** Frontend development for a seamless user experience.
 - **Solidity:** Smart contract development for property tokenization and management.
 - **IPFS:** Used for decentralized storage of property data and documents.
 
-## Contributors
-
-This project was developed by a team of passionate developers during the BIH x Arbitrum Bootcamp 2023-2024 Hackathon.
-
-**Contributors include:**
-
-- Dauda Lawal (Team Lead)
-- Ayewa Precious (Blockchain Developer)
-- Oluwatosin Oluwatoba (Blockchain Developer)
-  
-## Feedback and Contributions
-
-We welcome feedback and contributions from the community to improve the AccessLite Real Estate Dapp further. 
-
-Feel free to open an issue on GitHub or submit a pull request with your suggestions and enhancements.
 
 ## License
 
@@ -64,8 +49,39 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For inquiries or support, please contact us at [Daslaw26@gamil.com](mailto:daslaw26@gamil.com).
+For inquiries or support, please contact us at [aladejamiudamilola@gamil.com](mailto:aladejamiudamilola@gamil.com).
 
 Thank you for your interest in AccessLite Real Estate Dapp. 
 
 Join us in revolutionizing the future of property investment!
+
+# Hardhat Template for ZetaChain
+
+This is a simple Hardhat template that provides a starting point for developing
+smart contract applications on ZetaChain.
+
+## Prerequisites
+
+Before getting started, ensure that you have
+[Node.js](https://nodejs.org/en/download) (version 18 or above) and
+[Yarn](https://yarnpkg.com/) installed on your system.
+
+## Getting Started
+
+To get started, install the necessary dependencies:
+
+```
+yarn
+```
+
+## Hardhat Tasks
+
+This template includes Hardhat tasks that streamline smart contract development.
+Learn more about the template and the functionality it provides
+[in the docs](https://www.zetachain.com/docs/developers/reference/template).
+
+## Next Steps
+
+To learn more about building decentralized apps on ZetaChain, follow the
+tutorials available in
+[the introduction to ZetaChain](https://www.zetachain.com/docs/developers).
