@@ -13,8 +13,8 @@ const main = async (args: any, hre: HardhatRuntimeEnvironment) => {
 
   const data = prepareData(
     args.contract,
-    ["string", ],
-    [args.name, ]
+    [],
+    []
   );
 
   let decimals = 18;
@@ -87,4 +87,3 @@ task("interact", "Interact with the contract", main)
   .addParam("amount", "Amount of tokens to send")
   .addOptionalParam("erc20", "Send an ERC-20 token")
   .addFlag("json", "Output in JSON")
-  .addParam("name")
